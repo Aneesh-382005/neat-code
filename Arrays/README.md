@@ -1,13 +1,13 @@
 Arrays
 
 1)	Develop a Menu driven program to demonstrate the following operations of Arrays
-——MENU——
-1. CREATE
-2. DISPLAY
-3. INSERT
-4. DELETE
-5. SEARCH
-6. EXIT
+    ——MENU——
+    1. CREATE
+    2. DISPLAY
+    3. INSERT
+    4. DELETE
+    5. SEARCH
+    6. EXIT
 
 2)	Design the logic to remove the duplicate elements from an Array and after the deletion the array should    contain the unique elements.
 
