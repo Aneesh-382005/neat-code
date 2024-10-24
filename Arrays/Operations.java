@@ -1,4 +1,3 @@
-
 package Arrays;
 import java.util.Scanner;
 
@@ -24,108 +23,145 @@ class Operations
             switch(choice)
             {
                 case 1:
-                    System.out.print("Enter the size of the array: ");
-                    size = sc.nextInt();
-                    arr = new int[size];
-                    System.out.println("Array created successfully!");
+                    Create(arr, size);
                     break;
                 case 2:
-                    if(arr == null)
-                    {
-                        System.out.println("Array is not created yet!");
-                    }
-                    else
-                    {
-                        System.out.println("Array elements are:");
-                        for(int i = 0; i < size; i++)
-                        {
-                            System.out.print(arr[i] + " ");
-                        }
-                        System.out.println();
-                    }
+                    Display(arr, size);
                     break;
                 case 3:
-                    if(arr == null)
-                    {
-                        System.out.println("Array is not created yet!");
-                    }
-                    else
-                    {
-                        System.out.print("Enter the index where you want to insert the element: ");
-                        int index = sc.nextInt();
-                        if(index < 0 || index >= size)
-                        {
-                            System.out.println("Invalid index!");
-                        }
-                        else
-                        {
-                            System.out.print("Enter the element you want to insert: ");
-                            int element = sc.nextInt();
-                            for(int i = size - 1; i > index; i--)
-                            {
-                                arr[i] = arr[i - 1];
-                            }
-                            arr[index] = element;
-                            size++;
-                            System.out.println("Element inserted successfully!");
-                        }
-                    }
+                    Insert(arr, size);
                     break;
                 case 4:
-                    if(arr == null)
-                    {
-                        System.out.println("Array is not created yet!");
-                    }
-                    else
-                    {
-                        System.out.print("Enter the index where you want to delete the element: ");
-                        int index = sc.nextInt();
-                        if(index < 0 || index >= size)
-                        {
-                            System.out.println("Invalid index!");
-                        }
-                        else
-                        {
-                            for(int i = index; i < size - 1; i++)
-                            {
-                                arr[i] = arr[i + 1];
-                            }
-                            size--;
-                        }
-                    }
+                    Delete(arr, size);
                     break;
                 case 5:
-                    if(arr == null)
-                    {
-                        System.out.println("Array is not created yet!");
-                    }
-                    else
-                    {
-                        System.out.print("Enter the element you want to search: ");
-                        int element = sc.nextInt();
-                        boolean found = false;
-                        for(int i = 0; i < size; i++)
-                        {
-                            if(arr[i] == element)
-                            {
-                                System.out.println("Element found at index " + i);
-                                found = true;
-                                break;
-                            }
-                        }
-                        if(!found)
-                        {
-                            System.out.println("Element not found!");
-                        }
-                    }
+                    Search(arr, size);
                     break;
                 case 6:
-                    System.out.println("Exiting the program!");
+                    System.out.println("Exiting...");
                     break;
                 default:
                     System.out.println("Invalid choice!");
             }
         }while(choice != 6);
+        sc.close();
+    }
+
+    public static void Create(int[] arr, int size)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        size = sc.nextInt();
+        arr = new int[size];
+        System.out.println("Enter the elements of the array: ");
+        for(int i = 0; i < size; i++)
+        {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println("Array created successfully!");
+        sc.close();
+    }
+
+    public static void Display(int[] arr, int size)
+    {
+        if(size == 0)
+        {
+            System.out.println("Array is empty!");
+            return;
+        }
+        System.out.println("Array elements are: ");
+        for(int i = 0; i < size; i++)
+        {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void Insert(int[] arr, int size)
+    {
+        if(size == 0)
+        {
+            System.out.println("Array is empty!");
+            return;
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the element to insert: ");
+        int ele = sc.nextInt();
+        System.out.print("Enter the position to insert: ");
+        int pos = sc.nextInt();
+        if(pos < 0 || pos > size)
+        {
+            System.out.println("Invalid position!");
+            sc.close();
+            return;
+        }
+        int[] temp = new int[size + 1];
+        for(int i = 0; i < pos; i++)
+        {
+            temp[i] = arr[i];
+        }
+        temp[pos] = ele;
+        for(int i = pos; i < size; i++)
+        {
+            temp[i + 1] = arr[i];
+        }
+        arr = temp;
+        size++;
+        System.out.println("Element inserted successfully!");
+        sc.close();
+    }
+
+    public static void Delete(int[] arr, int size)
+    {
+        if(size == 0)
+        {
+            System.out.println("Array is empty!");
+            return;
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the position to delete: ");
+        int pos = sc.nextInt();
+        if(pos < 0 || pos >= size)
+        {
+            System.out.println("Invalid position!");
+            sc.close();
+            return;
+        }
+        int[] temp = new int[size - 1];
+        for(int i = 0; i < pos; i++)
+        {
+            temp[i] = arr[i];
+        }
+        for(int i = pos + 1; i < size; i++)
+        {
+            temp[i - 1] = arr[i];
+        }
+        arr = temp;
+        size--;
+        System.out.println("Element deleted successfully!");
+        sc.close();
+    }
+
+    public static void Search(int[] arr, int size)
+    {
+        if(size == 0)
+        {
+            System.out.println("Array is empty!");
+            return;
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the element to search: ");
+        int ele = sc.nextInt();
+        for(int i = 0; i < size; i++)
+        {
+            if(arr[i] == ele)
+            {
+                System.out.println("Element found at position " + i);
+                sc.close();
+                return;
+            }
+        }
+        System.out.println("Element not found!");
         sc.close();
     }
 }
