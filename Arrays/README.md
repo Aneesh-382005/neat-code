@@ -9,7 +9,7 @@ Arrays
     5. SEARCH
     6. EXIT
 
-2)	Design the logic to remove the duplicate elements from an Array and after the deletion the array should    contain the unique elements.
+2)	Design the logic to remove the duplicate elements from an Array and after the deletion the array should contain the unique elements.
 
 3)	Predict the Output of the following program 
     int main()
@@ -20,6 +20,12 @@ Arrays
             system.out.println(arr[i]); 
         return 0;
     }
+
+Answer: 1
+        0
+        0
+        0
+        0
 
 4)	Implement the logic to
 i.	 Reverse the elements of an array 
