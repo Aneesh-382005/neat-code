@@ -19,4 +19,4 @@ Additional Questions:
 ●	https://www.interviewbit.com/problems/reverse-link-list-ii/
 ●	https://www.interviewbit.com/problems/rotate-list/
 ●	https://www.geeksforgeeks.org/adding-two-polynomials-using-linked-list/
-●	https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two- linked-lists/
+●	https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/

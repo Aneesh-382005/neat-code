@@ -17,7 +17,6 @@ public class EnhancedLinkedList extends LinkedLists
     {
         if(head == null)
             return;
-        
         Node current = head;
         while(current != null && current.data == key)
         {
