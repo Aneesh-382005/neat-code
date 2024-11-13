@@ -69,5 +69,4 @@ class CharacterStack
         }
         return top.data;
     }
-
 }

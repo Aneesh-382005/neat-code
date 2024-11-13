@@ -34,7 +34,6 @@ public class BalancedParentheses {
         } else {
             System.out.println("The expression does not have balanced parentheses.");
         }
-        
         scanner.close();
     }
 }
