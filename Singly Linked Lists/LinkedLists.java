@@ -9,10 +9,10 @@ class Node
     }
 }
 
-class LinkedList
+public class LinkedLists
 {
     Node head;
-    public LinkedList()
+    public LinkedLists()
     {
         this.head = null;
     }
