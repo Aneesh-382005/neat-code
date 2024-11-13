@@ -34,9 +34,9 @@ public class LinkedLists
     public void display()
     {
         Node current = head;
+        System.out.print("HEAD");
         while(current != null)
         {
-            System.out.print("HEAD");
             System.out.print(" --> " + current.data);
             current = current.next;
         }
