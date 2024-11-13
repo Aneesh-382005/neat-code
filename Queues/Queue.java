@@ -29,7 +29,7 @@ public class Queue
         return front == null;
     }
 
-    public void enqueue(int data)
+    public void Enqueue(int data)
     {
         Node newNode = new Node(data);
         if(rear == null)
@@ -43,7 +43,7 @@ public class Queue
         currentSize++;
     }
 
-    public void dequeue()
+    public void Dequeue()
     {
         if(isEmpty())
         {
