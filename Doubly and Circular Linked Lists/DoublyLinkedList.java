@@ -1,86 +1,89 @@
-/*
-Develop a menu driven program for the following operations of on a Circular as well as a Doubly Linked List.
-(a)	Insertion anywhere in the linked list (As a first node, as a last node, and after/before a specific node).
-(b)	Deletion of a specific node, say 'Delete Node 60'. That mean the node to be deleted may appear as a head node, last node or a node in between.
-(c)	Search for a node.
- */
-import java.util.Scanner;
-
-class Node
-{
-    int data;
-    Node next;
-    Node prev;
-    Node(int data)
-    {
-        this.data = data;
-        this.next = null;
-        this.prev = null;
-    }
-}
-
-class CircularLinkedList
+public class DoublyLinkedList
 {
     Node head;
-    Node tail;
-    CircularLinkedList()
+    static class Node
     {
-        head = null;
-        tail = null;
+        int data;
+        Node next;
+        Node prev;
+        Node(int data)
+        {
+            this.data = data;
+            next = null;
+            prev = null;
+        }
     }
 
-    void InsertAtFirst(int data)
+    public static DoublyLinkedList insertAtEnd(DoublyLinkedList list, int data)
     {
         Node newNode = new Node(data);
-        if(head == null)
-        {
-            head = newNode;
-            tail = newNode;
-            tail.next = head;
-            head.prev = tail;
-        }
+
+        if(list.head == null)
+            list.head = newNode;
         else
         {
-            newNode.next = head;
-            head.prev = newNode;
+            Node current = list.head;
+            while(current.next != null)
+            {
+                current = current.next;
+            }
+            current.next = newNode;
+            newNode.prev = current;
         }
+        return list;
     }
 
-    void InsertAtEnd(int data)
+    public static void DeleteByKey(DoublyLinkedList list, int key)
     {
-        Node newNode = new Node(data);
-        if(head == null)
+        if(list.head == null)
         {
-            head = newNode;
-            tail = newNode;
-        }
-        else
-        {
-            tail.next = newNode;
-            newNode.prev = tail;
-            tail = newNode;
-            tail.next = head;
-        }
-    }
-
-    void InsertAfter(int key, int data)
-    {
-        Node newNode = new Node(data);
-        if(head == null)
-        {
-            System.out.println("List is empty");
+            System.out.println("List is Empty");
             return;
         }
-        Node current = head;
-        do
+        Node current = list.head;
+        while(current != null && current.data != key)
         {
-            if(current.data == key)
-            {
-                newNode.next = current.next;
-                current.next.prev = newNode;
-                current.next = newNode;
-                newNode.prev = current;
-            }
+            current = current.next;
         }
+        if (current == null)
+        {
+            System.out.println("Key not found");
+            return;
+        }
+        if (current == list.head)
+        {
+            list.head = current.next;
+            list.head.prev = null;
+        }
+        else if (current.next == null)
+        {
+            (current.prev).next = null;
+        }
+        else
+        {
+            (current.prev).next = current.next;
+            (current.next).prev = current.prev;
+        }
+    }
+
+    public static void InsertAtBeginning(DoublyLinkedList list, int key)
+    {
+        Node newNode = new Node(key);
+        Node current = list.head;
+        list.head = newNode;
+        newNode.next = current;
+        current.prev = newNode;
+    }
+
+    public static void printList(DoublyLinkedList list)
+    {
+        Node current = list.head;
+        System.out.print("Head --> ");
+        while (current.next != null)
+        {
+            System.out.print(current.data + " --> <-- ");
+            current = current.next;
+        }
+        System.out.print(current.data + " --> Tail");
     }
 }
