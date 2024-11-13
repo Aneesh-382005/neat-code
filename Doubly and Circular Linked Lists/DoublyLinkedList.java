@@ -1,17 +1,24 @@
+class Node
+{
+    int data;
+    Node next;
+    Node prev;
+    Node(int data)
+    {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
 public class DoublyLinkedList
 {
     Node head;
-    static class Node
+    Node tail;
+    DoublyLinkedList()
     {
-        int data;
-        Node next;
-        Node prev;
-        Node(int data)
-        {
-            this.data = data;
-            next = null;
-            prev = null;
-        }
+        head = null;
+        tail = null;
     }
 
     public static DoublyLinkedList insertAtEnd(DoublyLinkedList list, int data)
@@ -85,5 +92,19 @@ public class DoublyLinkedList
             current = current.next;
         }
         System.out.print(current.data + " --> Tail");
+    }
+
+    int CountNodes()
+    {
+        if(head == null)
+            return 0;
+        int count = 0;
+        Node current = head;
+        while(current != null)
+        {
+            count++;
+            current = current.next;
+        }
+        return count;
     }
 }
