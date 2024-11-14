@@ -17,11 +17,11 @@ public class Queue
         }
     }
     Node front, rear;
-    int currentSize;
+    int size;
     public Queue()
     {
         this.front = this.rear = null;
-        this.currentSize = 0;
+        this.size = 0;
     }
 
     public boolean isEmpty()
@@ -40,15 +40,15 @@ public class Queue
 
         rear.next = newNode;
         rear = newNode;
-        currentSize++;
+        size++;
     }
 
-    public void Dequeue()
+    public int Dequeue()
     {
         if(isEmpty())
         {
             System.out.println("Queue is empty");
-            return;
+            return -1;
         }
         Node temp = front;
         front = front.next;
@@ -56,9 +56,9 @@ public class Queue
         {
             rear = null;
         }
-        System.out.println("Dequeued element: " + temp.data);
-        currentSize--;
-
+        //System.out.println("Dequeued element: " + temp.data);
+        size--;
+        return temp.data;
     }
 
     public void display()
