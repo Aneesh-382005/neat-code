@@ -36,7 +36,7 @@ class Node
 {
     int value;
     int minimum;
-    Node next = null;
+    Node next;
     Node(int value, int minimum, Node next)
     {
         this.value = value;
