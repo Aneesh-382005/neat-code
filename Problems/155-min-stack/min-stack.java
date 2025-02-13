@@ -11,7 +11,12 @@ class MinStack
         if (head == null)
             head = new Node(val, val, null);
         else
-            head = new Node(val, Math.min(val, head.minimum), head);
+        {
+            if(head.minimum < val)
+                head = new Node(val, head.minimum, head);
+            else
+                head = new Node(val, val, head);
+        }
     }
     
     public void pop()
