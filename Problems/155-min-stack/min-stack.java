@@ -3,7 +3,7 @@ class MinStack
     private Node head;
     public MinStack()
     {
-
+        head = null;
     }
     
     public void push(int val)
@@ -12,10 +12,7 @@ class MinStack
             head = new Node(val, val, null);
         else
         {
-            if(head.minimum < val)
-                head = new Node(val, head.minimum, head);
-            else
-                head = new Node(val, val, head);
+            head = new Node(val, Math.min(val, head.minimum), head);
         }
     }
     
