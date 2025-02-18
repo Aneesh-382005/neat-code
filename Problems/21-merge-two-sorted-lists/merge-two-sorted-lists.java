@@ -30,7 +30,7 @@ class Solution
         }
         if(list1 != null)
             current.next = list1;
-        else
+        if(list2 != null)
             current.next = list2;
         return mergedList.next;
     }
