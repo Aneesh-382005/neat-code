@@ -7,7 +7,7 @@ class Solution
         {
             if(prices[sell] > prices[buy])
             {
-                profit = prices[sell] - prices[buy];
+                profit = profit(prices, sell, buy);
                 maxProfit = Math.max(profit, maxProfit);
             }
             else
@@ -17,5 +17,9 @@ class Solution
             sell ++;
         }
         return maxProfit;
+    }
+    public int profit(int[] prices, int sell, int buy)
+    {
+        return prices[sell] - prices[buy];
     }
 }
